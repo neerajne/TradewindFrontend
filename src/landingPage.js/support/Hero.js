@@ -11,7 +11,7 @@ export const Hero = () => {
         </div>
         <div className="col-6 text-center">
           <p>
-            <a href="" style={{ color: "white" }}>
+            <a href="#" style={{ color: "white" }}>
               Track Tickets
             </a>
           </p>
@@ -36,13 +36,13 @@ export const Hero = () => {
           </p>
           <p style={{ color: "white", fontSize: "0.8rem" }}>
             1.
-            <a href="" style={{ color: "white" }}>
+            <a href="#" style={{ color: "white" }}>
               Current Takeover and Delisting- January 2024{" "}
             </a>
           </p>
           <p style={{ color: "white", fontSize: "0.8rem" }}>
             2.
-            <a href="" style={{ color: "white" }}>
+            <a href="#" style={{ color: "white" }}>
               Latest Intraday leverages- MIS and CO
             </a>
           </p>
@@ -52,7 +52,7 @@ export const Hero = () => {
         <div className="col-2"></div>
         <div className="col-10" style={{ paddingLeft: "2rem" }}>
           <div style={{ display: "flex" }}>
-            <a style={{ color: "white", fontSize: "0.75rem" }} href="">
+            <a style={{ color: "white", fontSize: "0.75rem" }} href="#">
               Track account opening
             </a>
             <a
@@ -61,7 +61,7 @@ export const Hero = () => {
                 fontSize: "0.75rem",
                 paddingLeft: "1.3rem",
               }}
-              href=""
+              href="#"
             >
               Track segment Activation
             </a>
@@ -71,14 +71,14 @@ export const Hero = () => {
                 fontSize: "0.75rem",
                 paddingLeft: "1.3rem",
               }}
-              href=""
+              href="#"
             >
               Intraday
             </a>
           </div>
           <div style={{ display: "flex" }}>
             <a
-              href=""
+              href="#"    
               style={{
                 color: "white",
                 fontSize: "0.75rem",
@@ -88,7 +88,7 @@ export const Hero = () => {
               margins
             </a>
             <a
-              href=""
+              href="#"
               style={{
                 color: "white",
                 fontSize: "0.75rem",

@@ -28,7 +28,7 @@ export const CreateTicket = () => {
             ].map((text, index) => (
               <a
                 key={index}
-                href=""
+                href="#"
                 className="d-block mt-2 text-decoration-none fs-6"
               >
                 {text}
@@ -52,7 +52,7 @@ export const CreateTicket = () => {
             ].map((text, index) => (
               <a
                 key={index}
-                href=""
+                href="#"
                 className="d-block mt-2 text-decoration-none fs-6"
               >
                 {text}
@@ -80,7 +80,7 @@ export const CreateTicket = () => {
             ].map((text, index) => (
               <a
                 key={index}
-                href=""
+                href="#"
                 className="d-block mt-2 text-decoration-none fs-6"
               >
                 {text}
@@ -105,7 +105,7 @@ export const CreateTicket = () => {
             ].map((text, index) => (
               <a
                 key={index}
-                href=""
+                href="#"
                 className="d-block mt-2 text-decoration-none fs-6"
               >
                 {text}
@@ -124,7 +124,7 @@ export const CreateTicket = () => {
               (text, index) => (
                 <a
                   key={index}
-                  href=""
+                  href="#"
                   className="d-block mt-2 text-decoration-none fs-6"
                 >
                   {text}
@@ -148,7 +148,7 @@ export const CreateTicket = () => {
             ].map((text, index) => (
               <a
                 key={index}
-                href=""
+                href="#"
                 className="d-block mt-2 text-decoration-none fs-6"
               >
                 {text}
