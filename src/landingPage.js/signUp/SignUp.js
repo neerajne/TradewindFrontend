@@ -24,7 +24,7 @@ export const SignUp = () => {
       try {
         console.log("sending request");
         const response = await axios.post(
-          "http://localhost:8080/user/signUp",
+          "https://tradewindbackend.onrender.com/user/signUp",
           userInfo
         );
         const result = response.data;
@@ -72,7 +72,7 @@ export const SignUp = () => {
       try {
         console.log("sending request");
         const response = await axios.post(
-          "http://localhost:8080/user/login",
+          "https://tradewindbackend.onrender.com/user/login",
           userInfo
         );
         const result = response.data;
