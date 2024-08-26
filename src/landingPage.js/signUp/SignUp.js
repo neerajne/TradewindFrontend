@@ -31,10 +31,7 @@ export const SignUp = () => {
         sessionStorage.setItem("userInfo", JSON.stringify(result));
         console.log("UserInfo saved:", sessionStorage.getItem("userInfo"));
 
-        // Send message to dashboard
-        // const dashboardUrl = "http://localhost:3002";
-        // window.postMessage({ type: 'USER_INFO', data: result }, dashboardUrl);
-
+        
         if (user && user.token) {
           window.location.href = "https://dashboardtradewind.netlify.app/";
         } else {
@@ -78,11 +75,7 @@ export const SignUp = () => {
         const result = response.data;
         sessionStorage.setItem("userInfo", JSON.stringify(result));
         console.log("UserInfo saved:", sessionStorage.getItem("userInfo"));
-
-        // Send message to dashboard
         const dashboardUrl = "https://dashboardtradewind.netlify.app/";
-        // window.postMessage({ type: 'USER_INFO', data: result }, dashboardUrl);
-
         if (user && user.token) {
           window.location.href = "https://dashboardtradewind.netlify.app/";
         }
