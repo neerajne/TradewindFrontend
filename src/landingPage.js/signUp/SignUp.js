@@ -36,7 +36,7 @@ export const SignUp = () => {
         window.postMessage({ type: 'USER_INFO', data: result }, dashboardUrl);
 
         if (user && user.token) {
-          window.location.href = "https://tradewind-dashboard-ot1h.vercel.app/";
+          window.location.href = "https://dashboardtradewind.netlify.app/";
         } else {
           navigate("/");
         }
@@ -80,7 +80,7 @@ export const SignUp = () => {
         console.log("UserInfo saved:", sessionStorage.getItem("userInfo"));
 
         // Send message to dashboard
-        const dashboardUrl = "https://tradewind-dashboard-ot1h.vercel.app/";
+        const dashboardUrl = "https://dashboardtradewind.netlify.app/";
         window.postMessage({ type: 'USER_INFO', data: result }, dashboardUrl);
 
         if (user && user.token) {
