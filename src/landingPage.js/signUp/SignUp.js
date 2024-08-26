@@ -8,107 +8,73 @@ import { useNavigate } from "react-router-dom";
 export const SignUp = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [userInfo, setUserInfo] = useState({});
-  const { user } = useUserContext();
+  const { user, setUser } = useUserContext();
   const navigate = useNavigate();
+
   const toggleForm = () => {
     setIsSignUp(!isSignUp);
   };
+
   const inputChangeHandler = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    const { name, value } = e.target;
     setUserInfo((prev) => ({ ...prev, [name]: value }));
   };
+
+  const handleSuccessfulAuth = (userData) => {
+    const dashboardUrl = new URL("https://dashboardtradewind.netlify.app/");
+    dashboardUrl.searchParams.append("token", userData.token);
+    window.location.href = dashboardUrl.toString();
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isSignUp) {
-      try {
-        console.log("sending request");
-        const response = await axios.post(
-          "https://tradewindbackend.onrender.com/user/signUp",
-          userInfo
-        );
-        const result = response.data;
-        sessionStorage.setItem("userInfo", JSON.stringify(result));
-        console.log("UserInfo saved:", sessionStorage.getItem("userInfo"));
+    const endpoint = isSignUp ? "signUp" : "login";
 
-        
-        if (user && user.token) {
-          window.location.href = "https://dashboardtradewind.netlify.app/";
-        } else {
-          navigate("/");
-        }
-        toast.success("signed in successfully", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Slide,
-        });
-        console.log(result);
-        setUserInfo({});
-        e.target.reset();
-      } catch (error) {
-        console.log(error);
-        toast.error(`${error}`, {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
+    try {
+      const response = await axios.post(
+        `https://tradewindbackend.onrender.com/user/${endpoint}`,
+        userInfo
+      );
+      const result = response.data;
+      sessionStorage.setItem("userInfo", JSON.stringify(result));
+      setUser(result);
+
+      if (result && result.token) {
+        handleSuccessfulAuth(result);
+      } else {
+        navigate("/");
       }
-    } else {
-      try {
-        console.log("sending request");
-        const response = await axios.post(
-          "https://tradewindbackend.onrender.com/user/login",
-          userInfo
-        );
-        const result = response.data;
-        sessionStorage.setItem("userInfo", JSON.stringify(result));
-        console.log("UserInfo saved:", sessionStorage.getItem("userInfo"));
-        const dashboardUrl = "https://dashboardtradewind.netlify.app/";
-        if (user && user.token) {
-          window.location.href = "https://dashboardtradewind.netlify.app/";
-        }
-        console.log(result);
-        toast.success("logged in successfully", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Slide,
-        });
-        setUserInfo({});
-        e.target.reset();
-      } catch (error) {
-        console.log(error);
-        toast.success(`${error}`, {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
-      }
+
+      toast.success(`${isSignUp ? "Signed up" : "Logged in"} successfully`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Slide,
+      });
+
+      setUserInfo({});
+      e.target.reset();
+    } catch (error) {
+      console.error(error);
+      toast.error(error.response?.data?.message || "An error occurred", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
   };
+
   return (
     <div className="auth-container pt-5 pb-5">
       <div className="form-container">
