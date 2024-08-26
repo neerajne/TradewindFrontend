@@ -84,7 +84,7 @@ export const SignUp = () => {
         window.postMessage({ type: 'USER_INFO', data: result }, dashboardUrl);
 
         if (user && user.token) {
-          window.location.href = "http://localhost:3002/";
+          window.location.href = "https://dashboardtradewind.netlify.app/";
         }
         console.log(result);
         toast.success("logged in successfully", {
