@@ -11,7 +11,7 @@ export const HomePage = () => {
   useEffect(() => {
     const userInfo = localStorage.getItem("userInfo");
     if (userInfo) {
-      window.location.href = "http://localhost:3002/";
+      window.location.href = "https://dashboardtradewind.netlify.app/";
     }
   }, []);
   return (
